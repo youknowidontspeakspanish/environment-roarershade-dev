@@ -1,0 +1,11 @@
+adminUser:
+  password: vault:roarershade/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: arcalos-admin@googlegroups.com
+  token: vault:roarershade/pipelineUser:token
+  username: cloudbees-ci-cd[bot]
+prow:
+  hmacToken: vault:roarershade/prow:hmacToken
+segmentWriteKey: vault:roarershade:segmentWriteKey

@@ -20,6 +20,14 @@ pipelineConfig:
         environment:
         - name: DEPLOY_NAMESPACE
           value: jx
+        - name: GIT_AUTHOR_NAME
+          value: cloudbees-ci-cd[bot]
+        - name: GIT_COMMITTER_NAME
+          value: cloudbees-ci-cd[bot]
+        - name: GIT_AUTHOR_EMAIL
+          value: arcalos-admin@googlegroups.com
+        - name: GIT_COMMITTER_EMAIL
+          value: arcalos-admin@googlegroups.com
         stages:
         - name: release
           steps:
@@ -220,7 +228,7 @@ pipelineConfig:
           - args:
             - ""
             - ""
-            - "now populating projects...."
+            - now populating projects....
             - ""
             - ""
             command: echo
