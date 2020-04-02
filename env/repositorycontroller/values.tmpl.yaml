@@ -1,0 +1,14 @@
+{{- if .Requirements.githubApp.enabled }}
+enabled: true
+{{- else }}
+enabled: false
+{{- end }}
+
+verboseLogging: true
+
+env:
+  JX_REQUIREMENT_DOMAIN_ISSUER_URL: "{{ .Requirements.ingress.domainIssuerURL }}"
+
+{{- if hasKey .Requirements.cluster "clusterName" }}
+serviceAccount: "{{ .Requirements.cluster.clusterName }}-jb"
+{{- end }}

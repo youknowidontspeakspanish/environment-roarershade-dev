@@ -1,0 +1,8 @@
+{{- if eq .Requirements.webhook "jenkins" }}
+enabled: true
+{{- else }}
+enabled: false
+{{- end }}
+
+env:
+  JX_LOG_FORMAT: stackdriver
