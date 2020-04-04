@@ -4,7 +4,7 @@ pipelineConfig:
     pullRequest:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/builder-go:2.0.1263-602
+          image: gcr.io/jenkinsxio/builder-go:2.0.1263-603
         stages:
         - name: pr
           steps:
@@ -16,7 +16,7 @@ pipelineConfig:
     release:
       pipeline:
         agent:
-          image: gcr.io/jenkinsxio/builder-go:2.0.1263-602
+          image: gcr.io/jenkinsxio/builder-go:2.0.1263-603
         environment:
         - name: DEPLOY_NAMESPACE
           value: jx
@@ -85,14 +85,14 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.563
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.571
             name: get-tenant-token
           - args:
             - get
             - subdomain
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.563
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.571
             name: get-subdomain
           - args:
             - step
@@ -220,7 +220,7 @@ pipelineConfig:
             - hmac
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.563
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.571
             name: update-hmac-token
           - command: ./adduser.sh
             dir: /workspace/source
@@ -288,7 +288,7 @@ pipelineConfig:
             - repositories
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.563
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.571
             name: register-repositories
           - args:
             - get
@@ -296,8 +296,17 @@ pipelineConfig:
             - token
             command: jxt
             dir: /workspace/source/env
-            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.563
+            image: gcr.io/jenkinsxio/jx-tenant-service:0.0.571
             name: refresh-git-tokens
+          - args:
+            - step
+            - verify
+            - dns
+            - --timeout
+            - 10m
+            command: jx
+            dir: /workspace/source
+            name: verify-dns
           - args:
             - step
             - verify
