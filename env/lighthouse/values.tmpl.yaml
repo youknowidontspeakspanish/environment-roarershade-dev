@@ -53,6 +53,5 @@ oauthToken: "{{ .Parameters.pipelineUser.token }}"
 logFormat: "stackdriver"
 
 env:
-{{- if hasKey .Parameters "dashboardUrl" }}  
-  LIGHTHOUSE_REPORT_URL_BASE: "{{ .Parameters.dashboardUrl }}/jenkinsx/teams/{{ .Requirements.cluster.clusterName }}"
-{{- end }}
+  # https://dashboard.jxaas.live/jenkinsx/teams/cbjx-speakerwhite/projects
+  LIGHTHOUSE_REPORT_URL_BASE: "https://dashboard.jxaas.live/jenkinsx/teams/{{ .Requirements.cluster.clusterName }}"
